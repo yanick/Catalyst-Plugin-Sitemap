@@ -10,16 +10,18 @@ use Catalyst::Test 'TestApp';
 
 my $xml = request('/sitemap')->content;
 
+diag $xml;
+
 $xml =~ s/\s+//g;
 
-like $xml, qr{<url><loc>http://localhost/alone</loc></url>}, ':Sitemap';
-like $xml, qr{<url><loc>http://localhost/with_function</loc></url>},
+like $xml, qr{<url><loc>http://localhost/root/alone</loc></url>}, ':Sitemap';
+like $xml, qr{<url><loc>http://localhost/root/with_function</loc></url>},
   ':Sitemap(*)';
 like $xml,
-  qr{<url><loc>http://localhost/with_priority</loc><priority>0.75</priority></url>},
+  qr{<url><loc>http://localhost/root/with_priority</loc><priority>0.75</priority></url>},
   ':Sitemap(0.75)';
 
 like $xml,
-  qr{<url><loc>http://localhost/with_args</loc><lastmod>2010-09-27</lastmod><changefreq>daily</changefreq></url>},
+  qr{<url><loc>http://localhost/root/with_args</loc><lastmod>2010-09-27</lastmod><changefreq>daily</changefreq></url>},
   ':Sitemap(lotsa stuff)';
 

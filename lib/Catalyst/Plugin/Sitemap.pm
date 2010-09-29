@@ -61,7 +61,7 @@ sub sitemap {
 
     }
 
-    return $sitemap->xml;
+    return $sitemap;
 }
 
 1;
