@@ -1,0 +1,12 @@
+Build.PL
+Changes
+LICENSE
+MANIFEST
+META.json
+META.yml
+SIGNATURE
+lib/Catalyst/Plugin/Sitemap.pm
+t/000-report-versions.t
+t/lib/TestApp.pm
+t/lib/TestApp/Controller/Root.pm
+t/sitemap.t
