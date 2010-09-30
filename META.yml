@@ -1,0 +1,36 @@
+---
+abstract: 'Sitemap support for Catalyst.'
+author:
+  - 'Yanick Champoux <yanick@babyl.dyndns.org>'
+build_requires:
+  Carp: 0
+  Catalyst: 0
+  Catalyst::Controller: 0
+  Catalyst::Test: 0
+  Module::Build: 0.3601
+  Scalar::Util: 0
+  Test::More: 0.94
+  parent: 0
+  perl: 5.004
+configure_requires:
+  Module::Build: 0.3601
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.101900, CPAN::Meta::Converter version 2.101590'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Catalyst-Plugin-Sitemap
+provides:
+  Catalyst::Plugin::Sitemap:
+    file: lib/Catalyst/Plugin/Sitemap.pm
+    version: v0.0.1
+requires:
+  List::Util: 0
+  Moose::Role: 0
+  Search::Sitemap: 0
+resources:
+  bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Catalyst-Plugin-Sitemap
+  homepage: http://search.cpan.org/dist/Catalyst-Plugin-Sitemap/
+  repository: git://github.com/yanick/Catalyst-Plugin-Sitemap.git
+version: 0.0.1
