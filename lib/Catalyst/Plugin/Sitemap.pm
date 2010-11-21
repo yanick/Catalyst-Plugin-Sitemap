@@ -127,7 +127,16 @@ once.
 
 =item L<Search::Sitemap>
 
+Module that C<Catalyst::Plugin::Sitemap> uses under the hood.
+
+=item L<Dancer::Plugin::SiteMap>
+
+Similar plugin for the L<Dancer> framework, which inspired
+C<Catalyst::Plugin::Sitemap>. 
+
 =item http://babyl.dyndns.org/techblog/entry/catalyst-plugin-sitemap
+
+Blog article introducing C<Catalyst::Plugin::Sitemap>.
 
 =back
 
