@@ -35,7 +35,7 @@ package Catalyst::Plugin::Sitemap;
     sub sitemap : Path('/sitemap') {
         my ( $self, $c ) = @_;
  
-        $c->res->body( $c->sitemap->xml );
+        $c->res->body( $c->sitemap->as_xml->sprint );
     }
 
 =head1 DESCRIPTION
@@ -47,7 +47,7 @@ of the sitemap of a Catalyst application.
 
 =head2 sitemap()
 
-Returns a L<Search::Sitemap> object. The sitemap object is populated by 
+Returns a L<WWW::Search::XML> object. The sitemap object is populated by 
 inspecting the controllers of the application for actions with the 
 sub attribute C<:Sitemap>.
 
@@ -89,7 +89,8 @@ resolves in a single url, this will results in an error.
         ...
     }
 
-Adds the url with the given entry attributes (as defined by C<Search::Sitemap>).
+Adds the url with the given entry attributes (as defined by
+L<WWW::Search::XML::URL>).
 
 If the action does not
 resolves in a single url, this will results in an error.
@@ -116,7 +117,7 @@ resolving to many urls.
 =head1 BUGS AND LIMITATIONS
 
 Currently, each invocation of the method C<sitemap()> will 
-re-generate the C<Search::Sitemap> object.  A future version
+re-generate the C<WWW::Sitemap::XML> object.  A future version
 of this module might offer a way to only compute the sitemap
 once.
 
@@ -125,7 +126,7 @@ once.
 
 =over 
 
-=item L<Search::Sitemap>
+=item L<WWW::Sitemap::XML>
 
 =item http://babyl.dyndns.org/techblog/entry/catalyst-plugin-sitemap
 
@@ -140,14 +141,13 @@ use Moose::Role;
 
 no warnings qw/uninitialized/;
 
-use Search::Sitemap;
+use WWW::Sitemap::XML;
 use List::Util qw/ first /;
 
 sub sitemap {
     my $self = shift;
 
-    my $sitemap = Search::Sitemap->new;
-    $sitemap->pretty(1);
+    my $sitemap = WWW::Sitemap::XML->new;
 
     for my $controller ( $self->controller(qr//) ) {
       ACTION:

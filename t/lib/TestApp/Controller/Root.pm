@@ -8,7 +8,7 @@ use parent 'Catalyst::Controller';
 sub sitemap : Path('/sitemap') {
     my ( $self, $c ) = @_;
 
-    $c->res->body( $c->sitemap->xml );
+    $c->res->body( $c->sitemap->as_xml->sprint );
 }
 
 sub alone :Local :Sitemap { }
