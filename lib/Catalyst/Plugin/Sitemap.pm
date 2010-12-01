@@ -1,4 +1,5 @@
 package Catalyst::Plugin::Sitemap;
+
 # ABSTRACT: Sitemap support for Catalyst.
 
 =head1 SYNOPSIS
@@ -35,7 +36,7 @@ package Catalyst::Plugin::Sitemap;
     sub sitemap : Path('/sitemap') {
         my ( $self, $c ) = @_;
  
-        $c->res->body( $c->sitemap->as_xml->sprint );
+        $c->res->body( $c->sitemap_as_xml );
     }
 
 =head1 DESCRIPTION
@@ -47,9 +48,13 @@ of the sitemap of a Catalyst application.
 
 =head2 sitemap()
 
-Returns a L<WWW::Search::XML> object. The sitemap object is populated by 
+Returns a L<WWW::Sitemap::XML> object. The sitemap object is populated by 
 inspecting the controllers of the application for actions with the 
 sub attribute C<:Sitemap>.
+
+=head2 sitemap_as_xml()
+
+Returns the sitemap as a string containing its XML representation.
 
 =head1 C<:Sitemap> Subroutine Attribute
 
@@ -90,7 +95,7 @@ resolves in a single url, this will results in an error.
     }
 
 Adds the url with the given entry attributes (as defined by
-L<WWW::Search::XML::URL>).
+L<WWW::Sitemap::XML::URL>).
 
 If the action does not
 resolves in a single url, this will results in an error.
@@ -114,21 +119,18 @@ resolving to many urls.
 =back
 
 
-=head1 BUGS AND LIMITATIONS
-
-Currently, each invocation of the method C<sitemap()> will 
-re-generate the C<WWW::Sitemap::XML> object.  A future version
-of this module might offer a way to only compute the sitemap
-once.
-
-
 =head1 SEE ALSO
 
 =over 
 
 =item L<WWW::Sitemap::XML>
 
-Module that C<Catalyst::Plugin::Sitemap> uses under the hood.
+Module that C<Catalyst::Plugin::Sitemap> currently uses under the hood.
+
+=item L<Search::Sitemap>
+
+Original module that this plugin was using under the hood.
+
 
 =item L<Dancer::Plugin::SiteMap>
 
@@ -153,12 +155,23 @@ no warnings qw/uninitialized/;
 use WWW::Sitemap::XML;
 use List::Util qw/ first /;
 
-sub sitemap {
+has sitemap => (
+    is      => 'ro',
+    builder => '_build_sitemap',
+    lazy    => 1,
+);
+
+sub sitemap_as_xml {
+    my $self = shift;
+    return $self->sitemap->as_xml->toString;
+}
+
+sub _build_sitemap {
     my $self = shift;
 
     my $sitemap = WWW::Sitemap::XML->new;
 
-    for my $controller ( $self->controller(qr//) ) {
+    for my $controller ( map { $self->controller($_) } $self->controllers ) {
       ACTION:
         for my $a ( $controller->get_action_methods ) {
 
@@ -185,6 +198,7 @@ sub sitemap {
                 }
 
                 if ( $attr[0] + 0 > 0 ) {
+
                     # it's a number
                     $uri_params{priority} = $attr[0];
                 }
@@ -196,9 +210,7 @@ sub sitemap {
 
             $uri_params{loc} = $self->uri_for_action( $action->private_path );
 
-            $sitemap->add( \%uri_params );
-
-            next ACTION;
+            $sitemap->add(%uri_params);
         }
 
     }
