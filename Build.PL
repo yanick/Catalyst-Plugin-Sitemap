@@ -25,7 +25,7 @@ my %module_build_args = (
     'Yanick Champoux <yanick@babyl.dyndns.org>'
   ],
   'dist_name' => 'Catalyst-Plugin-Sitemap',
-  'dist_version' => '0.0.1',
+  'dist_version' => '1.0.0',
   'license' => 'perl',
   'module_name' => 'Catalyst::Plugin::Sitemap',
   'recommends' => {},
@@ -33,7 +33,7 @@ my %module_build_args = (
   'requires' => {
     'List::Util' => '0',
     'Moose::Role' => '0',
-    'Search::Sitemap' => '0'
+    'WWW::Sitemap::XML' => '0'
   },
   'script_files' => []
 );

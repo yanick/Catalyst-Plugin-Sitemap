@@ -4,7 +4,7 @@
       "Yanick Champoux <yanick@babyl.dyndns.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.101900, CPAN::Meta::Converter version 2.101590",
+   "generated_by" : "Dist::Zilla version 4.102345, CPAN::Meta::Converter version 2.101590",
    "license" : [
       "perl_5"
    ],
@@ -28,7 +28,7 @@
          "requires" : {
             "List::Util" : 0,
             "Moose::Role" : 0,
-            "Search::Sitemap" : 0
+            "WWW::Sitemap::XML" : 0
          }
       },
       "test" : {
@@ -47,7 +47,7 @@
    "provides" : {
       "Catalyst::Plugin::Sitemap" : {
          "file" : "lib/Catalyst/Plugin/Sitemap.pm",
-         "version" : "v0.0.1"
+         "version" : "v1.0.0"
       }
    },
    "release_status" : "stable",
@@ -63,6 +63,6 @@
          "web" : "http://github.com/yanick/Catalyst-Plugin-Sitemap/tree"
       }
    },
-   "version" : "0.0.1"
+   "version" : "1.0.0"
 }
 
