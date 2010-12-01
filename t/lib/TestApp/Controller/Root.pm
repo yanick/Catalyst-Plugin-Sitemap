@@ -7,8 +7,15 @@ use parent 'Catalyst::Controller';
 
 sub sitemap : Path('/sitemap') {
     my ( $self, $c ) = @_;
+    $c->res->body( $c->sitemap_as_xml );
+}
 
-    $c->res->body( $c->sitemap->xml );
+sub dynamic :Path('/dynamic') {
+    my ( $self, $c ) = @_;
+
+    $c->sitemap->add( "http://localhost/sumfin" ); #''.$c->uri_for( '/sumfin' ) );
+
+    $c->res->body( 'dynamic it is' );
 }
 
 sub alone :Local :Sitemap { }

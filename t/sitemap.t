@@ -5,12 +5,11 @@ use warnings;
 use Test::More tests => 4;    # last test to print
 
 use lib 't/lib';
-
 use Catalyst::Test 'TestApp';
 
-my $xml = request('/sitemap')->content;
+my $xml = get('/sitemap');
 
-diag $xml;
+note $xml;
 
 $xml =~ s/\s+//g;
 
