@@ -1,6 +1,7 @@
 Revision history for Catalyst-Plugin-Sitemap
 
 {{$NEXT}}
+    - General dstribution maintenance.
 
 1.0.0     2010-11-30 21:41:34 America/Montreal
     - Change sitemap object under the hood to WWW::Sitemap::XML.
