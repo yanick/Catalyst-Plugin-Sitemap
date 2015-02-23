@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 4;    # last test to print
+use Test::More tests => 4;
 
 use lib 't/lib';
 use Catalyst::Test 'TestApp';
