@@ -18,8 +18,7 @@ has sitemap => (
 );
 
 sub sitemap_as_xml {
-    my $self = shift;
-    return $self->sitemap->as_xml->toString;
+    return $_[0]->sitemap->as_xml->toString;
 }
 
 sub _build_sitemap {
