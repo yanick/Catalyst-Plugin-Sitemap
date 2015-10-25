@@ -133,7 +133,7 @@ Original module that this plugin was using under the hood.
 Similar plugin for the L<Dancer> framework, which inspired
 C<Catalyst::Plugin::Sitemap>. 
 
-=item L<http://babyl.dyndns.org/techblog/entry/catalyst-plugin-sitemap>
+=item L<http://techblog.babyl.ca/entry/catalyst-plugin-sitemap>
 
 Blog article introducing C<Catalyst::Plugin::Sitemap>.
 
