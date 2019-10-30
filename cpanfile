@@ -1,4 +1,3 @@
-requires "List::Util" => "0";
 requires "Moose::Role" => "0";
 requires "WWW::Sitemap::XML" => "0";
 requires "strict" => "0";
