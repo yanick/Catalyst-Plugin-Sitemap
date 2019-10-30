@@ -9,7 +9,6 @@ use Moose::Role;
 no warnings qw/uninitialized/;
 
 use WWW::Sitemap::XML;
-use List::Util qw/ first /;
 
 has sitemap => (
     is      => 'ro',

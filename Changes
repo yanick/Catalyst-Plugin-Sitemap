@@ -1,6 +1,11 @@
 Revision history for Catalyst-Plugin-Sitemap
 
 {{$NEXT}}
+  [ MISC ]
+  - remove dependency to List::Util.
+  - update distro files.
+  - clean up tests.
+
   [ API CHANGES ]
 
   [ BUG FIXES ]
